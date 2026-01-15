@@ -1,0 +1,148 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+
+  --font-display: "Cormorant Garamond", serif;
+  --font-body: "Spectral", serif;
+  --font-accent: "Josefin Sans", sans-serif;
+}
+
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+/* ================= FONT CLASSES ================= */
+
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-accent {
+  font-family: var(--font-accent);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+/* ================= CURSOR ================= */
+
+@media (pointer: fine) {
+  body.cursor-ready * {
+    cursor: none;
+  }
+}
+
+@media (pointer: coarse) {
+  * {
+    cursor: auto;
+  }
+}
+/* ================= LINKS & BUTTONS ================= */
+a,
+button {
+  transition:
+    color 0.3s ease,
+    background-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+a:not(.no-gold-hover):hover,
+button:not(.no-gold-hover):hover {
+  color: #857416;
+}
+
+
+/* ================= ANIMATIONS ================= */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeUp {
+  animation: fadeUp 1.2s ease-out both;
+}
+
+.animate-fadeUp.delay-200 {
+  animation-delay: 0.2s;
+}
+
+.animate-fadeUp.delay-400 {
+  animation-delay: 0.4s;
+}
+
+
+/* ================= TYPOGRAPHY SYSTEM ================= */
+
+.h1-hero {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.9;
+  font-size: clamp(4.25rem, 6vw, 5rem);
+}
+
+.h2-section {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.475rem, 2vw, 7rem);
+}
+
+.h3-card {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.25rem;
+}
+
+.body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+
+.body-lg {
+  font-family: var(--font-body);
+  font-size: clamp(1.05rem, 1.3vw, 1.25rem);
+  line-height: 1.8;
+}
+
+.accent {
+  font-family: var(--font-accent);
+  font-size: 0.875rem;
+  letter-spacing: 0.06em;
+}
+
+/* ================= DAY PICKER ================= */
+
+/* Dates bloquées */
+.rdp-day_blocked {
+  background-color: #fee2e2 !important;
+  color: #991b1b !important;
+  cursor: not-allowed !important;
+}
+
+/* Dates sélectionnées */
+.rdp-day[aria-selected="true"] {
+  background-color: #2563eb !important;
+  color: white !important;
+}
+
+/* Milieu du range */
+.rdp-day_range_middle {
+  background-color: #93c5fd !important;
+  color: #1e3a8a !important;
+}

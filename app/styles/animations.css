@@ -1,0 +1,42 @@
+
+@keyframes reserve-shimmer {
+  0% {
+    transform: translateX(-150%) rotate(20deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  85% {
+    opacity: 0.35;
+  }
+  100% {
+    transform: translateX(250%) rotate(20deg);
+    opacity: 0;
+  }
+}
+
+/* Glow adapted for strong gold */
+@keyframes reserve-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 8px rgba(230, 194, 0, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 18px rgba(230, 194, 0, 0.5);
+  }
+}
+
+/* Very subtle vibration / breathing */
+@keyframes reserve-vibrate {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-1px);
+  }
+}
