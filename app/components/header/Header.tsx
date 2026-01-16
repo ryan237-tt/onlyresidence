@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { HiBars3, HiXMark } from "react-icons/hi2";
+import { HiMenu, HiX } from "react-icons/hi";
 import { usePathname } from "next/navigation";
 import ReserveButton from "../ReserveButton";
 
@@ -174,7 +174,7 @@ export default function Header() {
             aria-expanded={menuOpen}
             className="md:hidden p-2 rounded-full hover:bg-black/5 transition"
           >
-            {menuOpen ? <HiXMark size={26} /> : <HiBars3 size={26} />}
+            {menuOpen ? <HiX size={26} /> : <HiMenu size={26} />}
           </button>
         </div>
 
