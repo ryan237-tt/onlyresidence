@@ -14,7 +14,6 @@ export async function DELETE(
 
   const { id } = await context.params;
 
-  // Sécurité : un super admin ne peut pas se supprimer lui-même
   if (id === admin.id) {
     return NextResponse.json(
       { error: "You cannot delete yourself" },
