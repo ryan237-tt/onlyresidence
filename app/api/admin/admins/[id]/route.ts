@@ -11,7 +11,7 @@ export async function DELETE(
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const { id } = await params; // Await the params Promise
+  const { id } = await params; // Await the params Promise here
 
   if (id === admin.id) {
     return NextResponse.json(
