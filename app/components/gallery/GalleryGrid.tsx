@@ -6,28 +6,28 @@ import GalleryLightbox from "./GalleryLightbox";
 
 const images = [
   {
-    src: "/images/home/design-suite.avif",
+    src: "https://res.cloudinary.com/divylndt3/image/upload/v1768608559/IMG_2378_ms6ttp.jpg",
     alt: "Forest view from the suite"  },  
   {
-    src: "/images/gallery/02_HERO_full-suite-warm-COMPLETE.png",
+    src: "https://res.cloudinary.com/divylndt3/image/upload/v1768608564/IMG_2494_mhovir.jpg",
     alt: "Full luxury suite with warm lighting and panoramic forest view",
   },
   {
-    src: "/images/gallery/03_HERO_bathtub-balcony-pristine.png",
+    src: "https://res.cloudinary.com/divylndt3/image/upload/v1768608564/IMG_2494_mhovir.jpg",
     alt: "Freestanding bathtub with balcony and forest view",
   },
   {
-    src: "/images/gallery/04_HERO_drone-night-aerial.jpg",
+    src: "https://res.cloudinary.com/divylndt3/image/upload/v1768608564/IMG_2494_mhovir.jpg",
     alt: "Aerial night view of Vita Resort outlined by LED lighting",
   },
   {
-    src: "/images/gallery/05_HERO_bathroom-gold-luxury.jpg",
+    src: "https://res.cloudinary.com/divylndt3/image/upload/v1768608564/IMG_2494_mhovir.jpg",
     alt: "Luxury spa bathroom with dark marble and gold finishes",
   },
 
   // BEDROOM
   {
-    src: "/images/gallery/06_BEDROOM_cove-lighting-architectural.png",
+    src: "https://res.cloudinary.com/divylndt3/image/upload/v1768608535/IMG_2455_cdrfiw.jpg",
     alt: "Architectural cove ceiling with indirect LED lighting",
   },
   {
@@ -140,7 +140,7 @@ export default function GalleryGrid() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {images.map((img, i) => (
             <div
-              key={img.src}
+              key={`${img.src}-${i}`}
               className="img-blur-up transition-all group relative overflow-hidden rounded-lg aspect-[4/3] bg-gray-100 cursor-pointer ease-out duration-700"
               onClick={() => setActiveIndex(i)}
             >

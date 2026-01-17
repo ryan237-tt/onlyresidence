@@ -63,9 +63,6 @@ const adminLink = `${siteUrl}/admin/bookings/${bookingId}`;
       `Booking ID: ${bookingId}`,
       `Total: ${total} XAF`,
       "",
-      "Admin booking link:",
-      adminLink, // 👈 SEUL SUR SA LIGNE
-      "",
       "Thank you.",
     ].join("\n")
   );

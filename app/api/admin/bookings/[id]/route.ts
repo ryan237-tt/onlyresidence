@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { pool } from "@/app/lib/db";
 import { cookies } from "next/headers";
+import { requireAdmin } from "@/app/lib/admin-auth";
 
 /* =========================
    GET SINGLE BOOKING (ADMIN)
@@ -9,13 +10,10 @@ export async function GET(
   req: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  const cookieStore = await cookies(); // ✅ FIX
-  const token = cookieStore.get("admin_token")?.value;
-
-  if (token !== process.env.ADMIN_TOKEN) {
+ const admin = await requireAdmin();
+  if (!admin) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
-
   const { id } = await params;
 
   const res = await pool.query(
@@ -35,9 +33,9 @@ export async function PATCH(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const cookieStore = await cookies(); // ✅
-  const token = cookieStore.get("admin_token")?.value;
 
-  if (token !== process.env.ADMIN_TOKEN) {
+  const admin = await requireAdmin();
+  if (!admin) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 

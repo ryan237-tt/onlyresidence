@@ -1,23 +1,35 @@
 import { NextResponse } from "next/server";
+import { pool } from "@/app/lib/db";
+import bcrypt from "bcryptjs";
 
 export async function POST(req: Request) {
-  const body = await req.json();
-  const token = String(body.token ?? "");
+  const { email, password } = await req.json();
 
-  if (!process.env.ADMIN_TOKEN || token !== process.env.ADMIN_TOKEN) {
-    return NextResponse.json({ error: "Invalid token" }, { status: 401 });
+  const res = await pool.query(
+    "SELECT id, email, password_hash FROM admin_user WHERE email = $1 LIMIT 1",
+    [email.toLowerCase()]
+  );
+
+  const admin = res.rows[0];
+  if (!admin) {
+    return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
   }
 
-  const res = NextResponse.json({ ok: true });
+  const ok = bcrypt.compareSync(password, admin.password_hash);
+  if (!ok) {
+    return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
+  }
 
-  // httpOnly cookie
-  res.cookies.set("admin_token", token, {
+  const response = NextResponse.json({ ok: true });
+
+  // ✅ COOKIE UNIQUE POUR LA SESSION ADMIN
+  response.cookies.set("admin_id", admin.id, {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
     sameSite: "lax",
+    secure: process.env.NODE_ENV === "production",
     path: "/",
-    maxAge: 60 * 60 * 8, // 8 hours
+    maxAge: 60 * 60 * 8, // 8h
   });
 
-  return res;
+  return response;
 }

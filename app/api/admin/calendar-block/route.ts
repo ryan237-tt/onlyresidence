@@ -2,14 +2,9 @@ import { NextResponse } from "next/server";
 import { pool } from "@/app/lib/db";
 import { randomUUID } from "crypto";
 import { cookies } from "next/headers";
+import { requireAdmin } from "@/app/lib/admin-auth";
 
-// Auth helper
-async function requireAdmin() {
-  const token = (await cookies()).get("admin_token")?.value;
-  if (token !== process.env.ADMIN_TOKEN) {
-    throw new Error("UNAUTHORIZED");
-  }
-}
+
 
 /* ================= GET BLOCKS ================= */
 export async function GET() {

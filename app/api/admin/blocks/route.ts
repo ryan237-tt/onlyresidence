@@ -2,12 +2,15 @@ import { NextResponse } from "next/server";
 import { pool } from "@/app/lib/db";
 import { randomUUID } from "crypto";
 import { cookies } from "next/headers";
+import { requireAdmin } from "@/app/lib/admin-auth";
 
 export async function GET() {
-  const token = (await cookies()).get("admin_token")?.value;
-  if (token !== process.env.ADMIN_TOKEN) {
+  
+  const admin = await requireAdmin();
+  if (!admin) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
+
 
   const res = await pool.query(
     `SELECT * FROM blocked_dates ORDER BY start_date ASC`
