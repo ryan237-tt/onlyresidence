@@ -3,15 +3,40 @@
 import Image from "next/image";
 
 const images = [
-  { src: "/images/suite/hero-suite.png", alt: "Suite with forest view" },
-  { src: "/images/suite/bedroom-forest.png", alt: "Bedroom panoramic forest view" },
-  { src: "/images/suite/bathroom-bathtub.png", alt: "Bathtub with balcony" },
-  { src: "/images/suite/bathroom-gold.png", alt: "Luxury marble bathroom" },
-  { src: "/images/suite/dining.png", alt: "Dining nook" },
-  { src: "/images/suite/lighting.jpg", alt: "Architectural cove lighting" },
-  { src: "/images/suite/exterior-night.jpg", alt: "Vita Resort exterior at night" },
-  { src: "/images/suite/bathtub-wide.jpg", alt: "Wide bathtub view" },
+  {
+    src: "https://res.cloudinary.com/divylndt3/image/upload/v1768608559/IMG_2378_ms6ttp.jpg",
+    alt: "Suite exterior surrounded by forest",
+  },
+  {
+    src: "https://res.cloudinary.com/divylndt3/image/upload/v1768608535/IMG_2455_cdrfiw.jpg",
+    alt: "Bedroom with panoramic forest view",
+  },
+  {
+    src: "https://res.cloudinary.com/divylndt3/image/upload/v1768608533/IMG_2473_kfjidt.jpg",
+    alt: "Luxury bedroom interior",
+  },
+  {
+    src: "https://res.cloudinary.com/divylndt3/image/upload/v1768608522/IMG_2466_wvavs4.jpg",
+    alt: "Modern suite seating area",
+  },
+  {
+    src: "https://res.cloudinary.com/divylndt3/image/upload/v1768608549/IMG_2405_ntjkko.jpg",
+    alt: "Dining and kitchenette area",
+  },
+  {
+    src: "https://res.cloudinary.com/divylndt3/image/upload/v1768608544/IMG_2407_rqatud.jpg",
+    alt: "Bathroom with bathtub and premium finishes",
+  },
+  {
+    src: "https://res.cloudinary.com/divylndt3/image/upload/v1768608564/IMG_2494_mhovir.jpg",
+    alt: "Vita Resort façade at night",
+  },
+  {
+    src: "https://res.cloudinary.com/divylndt3/image/upload/v1768608562/IMG_2489_dl6bxc.jpg",
+    alt: "Architectural exterior detail",
+  },
 ];
+
 
 export default function SuiteGallery() {
   return (
