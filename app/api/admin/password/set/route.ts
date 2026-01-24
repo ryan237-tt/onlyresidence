@@ -7,7 +7,14 @@ export async function POST(req: Request) {
 
   if (!email || !password) {
     return NextResponse.json(
-      { error: "Missing data" },
+      { error: "Email and password required" },
+      { status: 400 }
+    );
+  }
+
+  if (password.length < 8) {
+    return NextResponse.json(
+      { error: "Password must be at least 8 characters" },
       { status: 400 }
     );
   }
@@ -19,7 +26,6 @@ export async function POST(req: Request) {
     UPDATE admin_user
     SET password_hash = $1
     WHERE email = $2
-      AND password_hash IS NULL
     RETURNING id
     `,
     [hash, email]
@@ -27,8 +33,8 @@ export async function POST(req: Request) {
 
   if (res.rowCount === 0) {
     return NextResponse.json(
-      { error: "Password already set or admin not found" },
-      { status: 400 }
+      { error: "Admin not found" },
+      { status: 404 }
     );
   }
 

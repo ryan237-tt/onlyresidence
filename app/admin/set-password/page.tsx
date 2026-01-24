@@ -1,9 +1,10 @@
 "use client";
 
-import { useSearchParams, useRouter } from "next/navigation";
+import { Suspense } from 'react';
+import { useSearchParams, useRouter } from 'next/navigation';
 import { useState } from "react";
 
-export default function SetPasswordPage() {
+function SetPasswordContent() {
   const params = useSearchParams();
   const router = useRouter();
   const email = params.get("email");
@@ -75,5 +76,13 @@ export default function SetPasswordPage() {
         </>
       )}
     </div>
+  );
+}
+
+export default function SetPasswordPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <SetPasswordContent />
+    </Suspense>
   );
 }
