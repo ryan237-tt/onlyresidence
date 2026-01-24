@@ -8,7 +8,7 @@ export default function Hero() {
     <section className="relative h-screen w-full overflow-hidden">
       {/* Background image */}
       <Image
-        src="/hero-forest-suite.jpg"
+        src="/hero-forest-suite.JPG"
         alt="Forest view luxury suite"
         fill
         priority
