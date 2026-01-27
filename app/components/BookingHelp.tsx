@@ -13,7 +13,7 @@ export default function BookingHelp() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="https://wa.me/237659099178"
+              href="https://wa.me/237694425910"
               target="_blank"
               className="px-6 py-3 rounded-xl bg-green-500 text-white font-semibold hover:opacity-90 transition"
             >
