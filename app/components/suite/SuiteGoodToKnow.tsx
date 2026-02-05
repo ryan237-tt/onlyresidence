@@ -51,10 +51,10 @@ export default function SuiteGoodToKnow() {
                 <span className="text-red-500 text-lg">✕</span>
                 <span>No on-site restaurant or full kitchen</span>
               </li>
-              <li className="flex items-start gap-4">
+              {/* <li className="flex items-start gap-4">
                 <span className="text-red-500 text-lg">✕</span>
                 <span>No swimming pool or fitness facilities</span>
-              </li>
+              </li> */}
               <li className="flex items-start gap-4">
                 <span className="text-red-500 text-lg">✕</span>
                 <span>No traditional reception desk</span>
@@ -86,6 +86,10 @@ export default function SuiteGoodToKnow() {
               <li className="flex items-start gap-4">
                 <span className="text-green-600 text-lg">✓</span>
                 <span>Fast delivery from trusted local restaurants</span>
+              </li>
+                            <li className="flex items-start gap-4">
+                <span className="text-red-500 text-lg">✕</span>
+                <span>No swimming pool or fitness facilities</span>
               </li>
               <li className="flex items-start gap-4">
                 <span className="text-green-600 text-lg">✓</span>
