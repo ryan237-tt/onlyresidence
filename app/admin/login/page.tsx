@@ -91,14 +91,7 @@ export default function AdminLoginPage() {
             Forgot password?
           </Link> */}
 
-          <Link
-            href="/admin/settings/password"
-            className="text-sm text-gray-500 hover:underline"
-          >
-            Change password
-          </Link>
-
-            {email && (
+                      {email && (
               <Link
                 href={`/admin/set-password?email=${encodeURIComponent(email)}`}
                 className="text-sm text-gray-500 hover:underline"
@@ -107,6 +100,12 @@ export default function AdminLoginPage() {
               </Link>
             )}
 
+          <Link
+            href="/admin/settings/password"
+            className="text-sm text-gray-500 hover:underline"
+          >
+            Change password
+          </Link>
 
 
         </div>
