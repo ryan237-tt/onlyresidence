@@ -87,8 +87,8 @@ export default function SuiteGoodToKnow() {
                 <span className="text-green-600 text-lg">✓</span>
                 <span>Fast delivery from trusted local restaurants</span>
               </li>
-                            <li className="flex items-start gap-4">
-                <span className="text-red-500 text-lg">✕</span>
+              <li className="flex items-start gap-4">
+                <span className="text-red-500 text-lg">✓</span>
                 <span>No swimming pool or fitness facilities</span>
               </li>
               <li className="flex items-start gap-4">
