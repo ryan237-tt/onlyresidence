@@ -7,9 +7,12 @@ import { rateLimit } from "@/app/lib/rateLimit";
 export async function POST(req: Request) {
   const { email, password } = await req.json();
 
-  // 🛑 validations
+  // 🛑 email requis
   if (!email) {
-    return NextResponse.json({ error: "Missing credentials" }, { status: 400 });
+    return NextResponse.json(
+      { error: "Email required" },
+      { status: 400 }
+    );
   }
 
   // 🔐 rate limit
@@ -42,7 +45,10 @@ export async function POST(req: Request) {
   );
 
   if (res.rows.length === 0) {
-    return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
+    return NextResponse.json(
+      { error: "Invalid credentials" },
+      { status: 401 }
+    );
   }
 
   const admin = res.rows[0];
@@ -50,16 +56,24 @@ export async function POST(req: Request) {
   // 🔒 account locked
   if (admin.locked_until && new Date(admin.locked_until) > new Date()) {
     return NextResponse.json(
-      { error: "Account temporarily locked. Try again later." },
+      { error: "Account temporarily locked" },
       { status: 423 }
     );
   }
 
-  // 🟡 password not set yet
+  // 🟡 PREMIÈRE CONNEXION → SET PASSWORD
   if (!admin.password_hash) {
     return NextResponse.json(
-      { error: "Password not set", code: "PASSWORD_NOT_SET" },
+      { code: "PASSWORD_NOT_SET" },
       { status: 403 }
+    );
+  }
+
+  // 🛑 password requis maintenant seulement
+  if (!password) {
+    return NextResponse.json(
+      { error: "Password required" },
+      { status: 400 }
     );
   }
 
@@ -80,7 +94,10 @@ export async function POST(req: Request) {
       [admin.id]
     );
 
-    return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
+    return NextResponse.json(
+      { error: "Invalid credentials" },
+      { status: 401 }
+    );
   }
 
   // ✅ success → reset counters
@@ -101,7 +118,7 @@ export async function POST(req: Request) {
     sameSite: "lax",
     secure: process.env.NODE_ENV === "production",
     path: "/",
-    maxAge: 60 * 60 * 8, // 8h
+    maxAge: 60 * 60 * 8,
   });
 
   return response;
